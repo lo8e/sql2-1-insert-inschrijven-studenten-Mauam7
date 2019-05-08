@@ -15,3 +15,9 @@ VALUES
 (90003,'Berg','','Joop','2000-12-06','4209 WD','Hindeloopen', 60, 1.79, '2019-03-21'),
 (90004,'Manvis','','Huup','2001-02-07','5478 HJ','Moerkappelle', 80, 1.81, '2019-02-07');
 
+INSERT INTO klassen_studenten
+(ov_nummer, klas_code) VALUES
+	(90001,'lo9e-amo1'),
+	(90002,'lo9e-amo2'),
+	(90003,'lo9e-amo3'),
+	(90004,'lo9e-amo4');
