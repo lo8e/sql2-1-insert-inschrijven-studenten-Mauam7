@@ -1,7 +1,7 @@
 USE lo8e_sql2;
 
 INSERT INTO klassen
- (klas_code, slb_code, cohort, opleiding_code)
+(klas_code, slb_code, cohort, opleiding_code)
 VALUES
 ('lo9e-amo1', 'vlt03', 2019, 'amo'),
 ('lo9e-amo2', 'rs001', 2019, 'amo'),
@@ -21,10 +21,21 @@ INSERT INTO klassen_studenten(ov_nummer, klas_code) VALUES
     (90003,'lo9e-amo3'),
     (90004,'lo9e-amo3');
     
-    UPDATE studenten
+UPDATE studenten
 SET geboortedatum='2001-06-07'
 WHERE ov_nummer='90002';
 
 UPDATE studenten
 SET actief = false
 WHERE inschrijvings_datum <= '2017-01-01';
+
+SELECT concat(studenten.voornaam,' ', studenten.tussenvoegsel,' ', studenten.achternaam) AS Naam, klassen.cohort , klassen.klas_code, klassen_studenten.ov_nummer, concat(docenten.voorletters, ' ', docenten.tussenvoegsel, ' ', docenten.achternaam) AS 'slb-er' FROM studenten
+INNER JOIN klassen_studenten 
+ON klassen_studenten.ov_nummer = studenten.ov_nummer
+INNER JOIN klassen
+ON klassen.klas_code = klassen_studenten.klas_code
+INNER JOIN docenten
+ON klassen.slb_code = docenten.docent_code
+WHERE studenten.actief = true
+ORDER BY  klassen.klas_code ASC, studenten.achternaam ASC;
+
