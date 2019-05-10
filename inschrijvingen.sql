@@ -24,3 +24,7 @@ INSERT INTO klassen_studenten(ov_nummer, klas_code) VALUES
     UPDATE studenten
 SET geboortedatum='2001-06-07'
 WHERE ov_nummer='90002';
+
+UPDATE studenten
+SET actief = false
+WHERE inschrijvings_datum <= '2017-01-01';
